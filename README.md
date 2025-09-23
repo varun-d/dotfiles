@@ -46,7 +46,7 @@ tmux attach-session # Connect with last session
 
 ### TODO
 
-[ ] - Update to latest NeoVim
-[ ] - Simplify LSP config
-[ ] - Add OpenCode support
-[ ] - Do I need this? https://github.com/nvim-lua/plenary.nvim
+- [ ] Update to latest NeoVim
+- [ ] Simplify LSP config
+- [ ] Add OpenCode support
+- [ ] Do I need this? https://github.com/nvim-lua/plenary.nvim
