@@ -4,6 +4,8 @@
 
 My personal tmux config is simple. I end up using <prefix>+c with CAPSLOCK set to Ctrl key on my Mac.
 
+![Simple tmux setup](tmux.png)
+
 ## NeoVim Config
 
 TODO: Update to latest NeoVim
