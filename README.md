@@ -44,14 +44,9 @@ tmux attach-session # Connect with last session
 
 ## NeoVim Config
 
-TODO: Update to latest NeoVim
+### TODO
 
-### TODO: Add the following plugins slowly and check for issues
-
-Oil File Explorer to quickly create, delete files of any type!
-https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file
-
-## Completions
-
-https://github.com/hrsh7th/nvim-cmp
-https://github.com/Saghen/blink.cmp
+[ ] - Update to latest NeoVim
+[ ] - Simplify LSP config
+[ ] - Add OpenCode support
+[ ] - Do I need this? https://github.com/nvim-lua/plenary.nvim
