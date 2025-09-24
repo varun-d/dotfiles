@@ -22,6 +22,8 @@ setkmap("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [
 setkmap("n", "<leader>w", "<CMD>w<CR>", { desc = "[W]rite to file." })
 setkmap("n", "<leader>x", "<CMD>bd<CR>", { desc = "[X]close buffer." })
 
+setkmap("n", "<leader>u", '<cmd>lua vim.pack.update()<CR>')
+
 -- Set jk kj as ESC keys.
 setkmap("i", "jk", "<Esc>")
 

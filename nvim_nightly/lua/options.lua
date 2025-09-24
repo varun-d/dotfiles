@@ -1,4 +1,3 @@
-
 -- My personal oions
 local o = vim.opt
 
@@ -16,6 +15,7 @@ o.cursorline = true
 -- For Go, leave tabs. Python use 4 tabstop with expandtab = ture, etc. in after/ft
 o.softtabstop = 4
 o.shiftwidth = 4
+o.expandtab = true
 
 -- Intend is True
 o.smartindent = true
@@ -40,9 +40,6 @@ o.confirm = true
 
 -- Save Undo History
 o.undofile = true
-
--- Sign Col. TODO: See if this works for you
-o.signcolumn = 'yes'
 
 -- Split windows settings
 o.splitright = true

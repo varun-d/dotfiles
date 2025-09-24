@@ -36,6 +36,36 @@ require("which-key").setup({
 
 })
 
+-- TODO: Treesitter setup
+local treesit = require("nvim-treesitter")
+treesit.install({
+    "bash",
+    "c",
+    "dockerfile",
+    "fish",
+    "git_config",
+    "git_rebase",
+    "gitattributes",
+    "gitcommit",
+    "gitignore",
+    "go",
+    "gomod",
+    "gosum",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "make",
+    "markdown",
+    "python",
+    "rust",
+    "sql",
+    "toml",
+    "tsx",
+    "typescript",
+    "yaml",
+    "zig",
+})
 -- Oil file explorer
 require('oil').setup()
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
