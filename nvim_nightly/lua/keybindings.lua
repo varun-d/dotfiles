@@ -23,7 +23,7 @@ setkmap("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [
 
 -- QOL keymaps like <leader>w or x to write, quit etc.
 setkmap("n", "<leader>w", "<CMD>w<CR>", { desc = "[W]rite to file." })
-setkmap("n", "<leader>x", "<CMD>bd<CR>", { desc = "[X]close buffer." })
+setkmap("n", "<leader>q", "<CMD>bd<CR>", { desc = "[Q]uit buffer." })
 
 setkmap("n", "<leader>u", '<cmd>lua vim.pack.update()<CR>')
 

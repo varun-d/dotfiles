@@ -4,6 +4,7 @@ vim.pack.add({
     { src = "https://github.com/nvim-mini/mini.nvim" },
     { src = "https://github.com/folke/which-key.nvim" },
     { src = "https://github.com/stevearc/oil.nvim" },
+    { src = "https://github.com/Saghen/blink.cmp" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 
     -- Color schemes
