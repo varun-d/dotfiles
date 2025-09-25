@@ -14,8 +14,12 @@ require("plugins")
 -- Import custom autocommands
 require("autocmds")
 
+-- Import languaeg server setup
+require("lsp")
+
 -- Mini Nvim Setup
 require("mini.statusline").setup()
+-- Disable this if using telescope properly
 require("mini.tabline").setup()
 require("mini.icons").setup()
 -- this isn't working for some reason

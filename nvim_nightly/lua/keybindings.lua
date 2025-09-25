@@ -6,6 +6,9 @@ local s = {silent = true}
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Temporary for neovim configuration builds
+setkmap("n", "<leader>b", ':update<CR> :source<CR>', { desc = "[B]uild config for local" })
+
 -- HARD MODE ON
 setkmap("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 setkmap("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
@@ -41,6 +44,9 @@ setkmap("n", "<C-u>", "<C-u>zz", { desc = "Move up in buffer and center with zz"
 -- TODO: Add Windows and Tab split shortcuts as your workflow grows! Don't do it too early.
 -- Oil Keymaps
 setkmap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+-- LSP Keymaps
+setkmap("n", "<leader>lf", vim.lsp.buf.format, { desc = "[F]ormat buffer" })
 
 -- Debugger Keymaps
 -- setkmap("n", "<leader>db", "<CMD>DapToggleBreakpoint<CR>", { desc = "Toggle [B]reakpoint" })
