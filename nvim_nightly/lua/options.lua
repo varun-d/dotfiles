@@ -9,6 +9,7 @@ o.timeoutlen = 300
 o.nu = true
 o.relativenumber = true
 o.cursorline = true
+o.signcolumn = "yes"
 
 -- Tabstop is default 8, softtabstop is 4 for visibility
 -- o.expandtabs = true can be set per language!
