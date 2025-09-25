@@ -70,10 +70,13 @@ treesit.install({
     "yaml",
     "zig",
 })
+
 -- Oil file explorer
 require('oil').setup()
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
+-- Completions
+require('blink.cmp').setup()
 -- Color Scheme, switch it here
 vim.cmd.colorscheme("gruvbox-material")
 -- vim.cmd.colorscheme("techbase")
