@@ -10,7 +10,3 @@ require("custom.options")
 
 -- Lazy Plugin Manager Install
 require("custom.lazy")
-
--- Color Scheme
--- vim.cmd.colorscheme("catppuccin-macchiato")
--- vim.cmd.colorscheme("catppuccin-macchiato")

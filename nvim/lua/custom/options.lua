@@ -14,6 +14,7 @@ vim.o.cursorline = true
 -- For Go, leave tabs. Python use 4 tabstop with expandtab = ture, etc. in after/ft
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
+vim.o.expandtab = true
 
 -- Intend is True
 vim.o.smartindent = true
@@ -40,7 +41,7 @@ vim.o.confirm = true
 vim.o.undofile = true
 
 -- Sign Col. TODO: See if this works for you
-vim.o.signcolumn = 'yes'
+vim.o.signcolumn = "yes"
 
 -- Split windows settings
 vim.o.splitright = true
@@ -48,4 +49,6 @@ vim.o.splitbelow = true
 
 -- Display of whitespace
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+vim.o.winborder = "rounded"

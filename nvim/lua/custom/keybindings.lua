@@ -1,39 +1,40 @@
 -- My Keybindings
--- IMPORTANT: Make sure leader key is set in init.lua upfront!
---
+local map = vim.keymap.set
+
 -- TIP: Disable arrow keys in normal mode
-vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+map("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+map("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+map("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 -- Clear highlight on pressing Escape after a search
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic Keymaps: TODO: Check if this is working fine later.
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- QOL keymaps like <leader>w or x to write, quit etc.
-vim.keymap.set("n", "<leader>w", "<CMD>w<CR>", { desc = "[W]rite to file." })
-vim.keymap.set("n", "<leader>x", "<CMD>bd<CR>", { desc = "[X]close buffer." })
+map("n", "<leader>w", "<CMD>w<CR>", { desc = "[W]rite to file." })
+map("n", "<leader>q", "<CMD>bd<CR>", { desc = "[X]close buffer." })
 
 -- Set jk kj as ESC keys.
-vim.keymap.set("i", "jk", "<Esc>")
+map("i", "jk", "<Esc>")
 
 -- Delete single character without copying into register
-vim.keymap.set("n", "x", '"_x')
+map("n", "x", '"_x')
 
 -- Keep last yanked when pasting
-vim.keymap.set("v", "p", '"_dP')
-vim.keymap.set("n", "x", '"_x')
+map("v", "p", '"_dP')
 
 -- Scroll and center Scroll on C-d and C-u
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move down in buffer and center with zz" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move up in buffer and center with zz" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Move down in buffer and center with zz" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Move up in buffer and center with zz" })
 
--- Autocommands and custom scripts added here
---
--- Highlight when yanking (copying) text
+-- Copy pasting helpers
+-- I personally copy a lot of lines to primary clipboard on "+ 
+map("n", "<leader>c", '"+yy', { desc = "Copy to system clipboard" })
+map("n", "<leader>v", '"+p', { desc = "Pase from system clipboard" })
+
 --  Try it with `yap` in normal mode
 --  See `:help vim.hl.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -44,10 +45,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- TODO: Add Windows and Tab split shortcuts as your workflow grows! Don't do it too early.
---
--- Oil Keymaps
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+-- Plugin Keymaps
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
--- Debugger Keymaps
--- vim.keymap.set("n", "<leader>db", "<CMD>DapToggleBreakpoint<CR>", { desc = "Toggle [B]reakpoint" })
+-- Format buffer manually if needed j
+map("n", "<leader>lf", vim.lsp.buf.format, { desc = "[F]ormat buffer" })
