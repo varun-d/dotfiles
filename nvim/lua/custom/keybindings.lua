@@ -10,7 +10,7 @@ map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 -- Clear highlight on pressing Escape after a search
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Diagnostic Keymaps: TODO: Check if this is working fine later.
+-- Diagnostic Keymaps
 map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- QOL keymaps like <leader>w or x to write, quit etc.
@@ -31,7 +31,7 @@ map("n", "<C-d>", "<C-d>zz", { desc = "Move down in buffer and center with zz" }
 map("n", "<C-u>", "<C-u>zz", { desc = "Move up in buffer and center with zz" })
 
 -- Copy pasting helpers
--- I personally copy a lot of lines to primary clipboard on "+ 
+-- I personally copy a lot of lines to primary clipboard on "+
 map("n", "<leader>c", '"+yy', { desc = "Copy to system clipboard" })
 map("n", "<leader>v", '"+p', { desc = "Pase from system clipboard" })
 
