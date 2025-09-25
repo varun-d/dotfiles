@@ -60,10 +60,12 @@ tmux attach-session # Connect with last session
 
 - [x] update to latest NeoVim (0.12)
 - [x] simplify LSP config, start with Lua Lsp
-- [ ] python, typescript, go, rust lsp
+- [x] python, go, rust lsp and formatters
+- [x] React, and Typescript and Tailwind support (if possible)
 - [ ] autoformat on save
 - [ ] mini.pick or telescope, maybe mini.pick with core lsp defs
 - [ ] fzf-lua
-- [ ] blink cmp
+- [x] blink cmp
+- [x] blink cmp, check fuzzy support error
 - [ ] add OpenCode support
 - [ ] do I need this? https://github.com/nvim-lua/plenary.nvim

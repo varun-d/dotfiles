@@ -1,7 +1,6 @@
 -- Set Leader Key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
 -- Import custom global options
 require("options")
 
@@ -31,15 +30,14 @@ require("mini.surround").setup()
 
 -- Which-key setup
 require("which-key").setup({
-	spec = {
-		{ "<leader>s", group = "[S]earch" },
-		{ "<leader>d", group = "[D]ebug" },
-		{ "<leader>t", group = "[T]oggle" },
-		{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
-	},
+    spec = {
+        { "<leader>s", group = "[S]earch" },
+        { "<leader>d", group = "[D]ebug" },
+        { "<leader>t", group = "[T]oggle" },
+        { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+    },
 
 })
-
 -- TODO: Treesitter setup
 local treesit = require("nvim-treesitter")
 treesit.install({
@@ -71,12 +69,23 @@ treesit.install({
     "zig",
 })
 
+-- Fidget LSP progress
+require('fidget').setup()
+
 -- Oil file explorer
 require('oil').setup()
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Completions
-require('blink.cmp').setup()
+require('blink.cmp').setup({
+    fuzzy = { implementation = "prefer_rust_with_warning" },
+    completion = {
+        documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 200,
+        }
+    },
+})
 -- Color Scheme, switch it here
 vim.cmd.colorscheme("gruvbox-material")
 -- vim.cmd.colorscheme("techbase")
