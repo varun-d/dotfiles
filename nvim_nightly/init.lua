@@ -69,7 +69,7 @@ treesit.install({
 })
 
 -- Fidget LSP progress
-require('fidget').setup()
+require('fidget').setup({})
 
 -- Oil file explorer
 require('oil').setup()

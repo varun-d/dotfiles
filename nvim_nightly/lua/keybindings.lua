@@ -19,7 +19,7 @@ setkmap("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 setkmap("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic Keymaps: TODO: Check if this is working fine later.
-setkmap("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+setkmap("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Diagnostic [Q]uickfix list" })
 
 -- QOL keymaps like <leader>w or x to write, quit etc.
 setkmap("n", "<leader>w", "<CMD>w<CR>", { desc = "[W]rite to file." })
