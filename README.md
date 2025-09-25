@@ -62,7 +62,7 @@ tmux attach-session # Connect with last session
 - [x] simplify LSP config, start with Lua Lsp
 - [ ] python, typescript, go, rust lsp
 - [ ] autoformat on save
-- [ ] mini.pick if needed
+- [ ] mini.pick or telescope, maybe mini.pick with core lsp defs
 - [ ] fzf-lua
 - [ ] blink cmp
 - [ ] add OpenCode support
