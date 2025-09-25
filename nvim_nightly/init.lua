@@ -18,15 +18,14 @@ require("lsp")
 
 -- Mini Nvim Setup
 require("mini.statusline").setup()
--- Disable this if using telescope properly
 require("mini.tabline").setup()
 require("mini.icons").setup()
--- this isn't working for some reason
 require("mini.diff").setup()
--- https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-pairs.md
 require("mini.pairs").setup()
--- https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-surround.md
 require("mini.surround").setup()
+require("mini.pick").setup({})
+require("mini.extra").setup({})
+
 
 -- Which-key setup
 require("which-key").setup({
