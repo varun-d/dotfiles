@@ -10,7 +10,7 @@ vim.o.relativenumber = true
 vim.o.cursorline = true
 
 -- Tabstop is default 8, softtabstop is 4 for visibility
--- vim.o.expandtabs = true can be set per language!
+-- vim.o.expandtab = true can be set per language!
 -- For Go, leave tabs. Python use 4 tabstop with expandtab = ture, etc. in after/ft
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
