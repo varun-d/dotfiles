@@ -7,9 +7,11 @@ return {
 			require("mini.statusline").setup()
 			require("mini.surround").setup()
 			require("mini.icons").setup()
+			require("mini.files").setup()
 			require("mini.diff").setup({
 				view = {
 					style = "sign",
+					priority = 199,
 					signs = {
 						add = "+",
 						change = "~",

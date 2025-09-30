@@ -46,8 +46,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Plugin Keymaps
-map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+-- File explorer keymaps
+map("n", "-", "<CMD>lua MiniFiles.open()<CR>", { desc = "Open parent directory" })
 
 -- Format buffer manually if needed j
 map("n", "<leader>lf", vim.lsp.buf.format, { desc = "[F]ormat buffer" })
