@@ -33,6 +33,7 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Move up in buffer and center with zz" })
 -- Copy pasting helpers
 -- I personally copy a lot of lines to primary clipboard on "+
 map("n", "<leader>c", '"+yy', { desc = "Copy to system clipboard" })
+map({ "n", "x" }, "<leader>c", '"+yy<ESC>', { desc = "Copy to system clipboard" })
 map("n", "<leader>v", '"+p', { desc = "Pase from system clipboard" })
 
 --  Try it with `yap` in normal mode
