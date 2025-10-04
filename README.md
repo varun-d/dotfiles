@@ -1,10 +1,11 @@
 # My dotfile configurations
 
-## Design Principles
+## Design Principles for my IDE
 
 1. Keep it simple
 2. Focus on top languages I work in
 3. Least plugins as possible
+4. Working formatters, LSP and autocomplete
 
 > "The worst part about nvim configuration is all the distracting projects that need to be completed."
 
@@ -47,6 +48,8 @@ tmux attach-session # Connect with last session
 ![Simple tmux setup](tmux.png)
 
 ## Neovim config
+
+Currently using Nvim 0.11. Nvim 0.12 setup was left halfway after realizing I am spending more time configuring nvim than working on my projects.
 
 ![Neovim Start Screen with mini.files](nvim_start.png)
 
