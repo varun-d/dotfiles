@@ -68,7 +68,7 @@ tmux attach-session # Connect with last session
 
 ## Other CLI Tools
 
-- [ ] [Lazygit](https://github.com/jesseduffield/lazygit), beaitifully simple to git
+- [ ] [Lazygit](https://github.com/jesseduffield/lazygit), beaitifully simple way to git
 - [ ] [Lazydocker](https://github.com/jesseduffield/lazydocker), lazy way to purge unused containers and images
 - [ ] fzf, rg, bat for getter terminal experience
 - [ ] iTerm2 because I am lazy to redo everything in kitty or allacrity...
