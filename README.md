@@ -50,7 +50,7 @@ tmux attach-session # Connect with last session
 
 ![Neovim Start Screen with mini.files](nvim_start.png)
 
-~[Neovim statusbar and tabs](nvim_file.png)
+![Neovim statusbar and tabs](nvim_file.png)
 
 ### TODO
 
