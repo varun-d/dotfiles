@@ -11,7 +11,7 @@ return {
 			require("mini.diff").setup({
 				view = {
 					style = "sign",
-					priority = 199,
+					priority = 10,
 					signs = {
 						add = "+",
 						change = "~",
