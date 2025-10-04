@@ -6,19 +6,13 @@
 2. Focus on top languages I work in
 3. Least plugins as possible
 
-## Language priority
-1. Python
-2. Typescript
-3. React
-4. CSS (with Tailwind support)
-
 > "The worst part about nvim configuration is all the distracting projects that need to be completed."
 
 ## Simple Tmux config, no plugins
 
-### Use CAPSLOCK as Ctrl
+### Step 1: Use CAPSLOCK as Ctrl
 
-### Remap bindings for easy prefix, CAPSLOCK + a
+### Step 2: Remap bindings for easy prefix, Ctrl + a (CAPSLOCK + A, easy to each)
 
 ```
 # Remap prefix from 'C-b' to 'C-a'
@@ -27,7 +21,7 @@ set-option -g prefix C-a
 bind-key C-a send-prefix
 ```
 
-### [c]reate new window, switch to [n]ext or [p]revious or by [#]
+### Step 3: Bindings for [c]reating new window, switching to [n]ext or [p]revious or by [<number>]
 
 ```
 prefix + c #e.g., CAPSLOCK + a, followed by 'c'
@@ -37,9 +31,7 @@ prefix + p #Switch to previous window
 prefix + l #Switch to last used window
 ```
 
-### Tmux Create / Attach / Detatch sessions
-
-I use my Rust cli tool to create sessions based on folder name with preset windows.
+### Tmux Create / Attach / Detatch sessions through shell script
 
 For example, `0: server, 1: nvim, 2: term, 3: git, 4: ai`
 
@@ -56,16 +48,28 @@ tmux attach-session # Connect with last session
 
 ## Neovim config
 
+![Neovim Start Screen with mini.files](nvim_start.png)
+
+~[Neovim statusbar and tabs](nvim_file.png)
+
 ### TODO
 
 - [x] update to latest NeoVim (0.12)
 - [x] simplify LSP config, start with Lua Lsp
 - [x] python, go, rust lsp and formatters
 - [x] React, and Typescript and Tailwind support (if possible)
-- [ ] autoformat on save
-- [ ] mini.pick or telescope, maybe mini.pick with core lsp defs
-- [ ] fzf-lua
+- [x] autoformat on save
+- [x] ~~mini.pick or telescope, maybe mini.pick with core lsp defs~~ mini.files!
+- [x] ~~fzf-lua~~ Still using telescope but using it for advance use cases
 - [x] blink cmp
 - [x] blink cmp, check fuzzy support error
-- [ ] add OpenCode support
+- [x] ~~add OpenCode support~~ Don't need for opencode / ai within nvim
 - [ ] do I need this? https://github.com/nvim-lua/plenary.nvim
+
+## Other CLI Tools
+
+- [ ] [Lazygit](https://github.com/jesseduffield/lazygit), beaitifully simple to git
+- [ ] [Lazydocker](https://github.com/jesseduffield/lazydocker), lazy way to purge unused containers and images
+- [ ] fzf, rg, bat for getter terminal experience
+- [ ] iTerm2 because I am lazy to redo everything in kitty or allacrity...
+- [ ] [OpenCode](https://opencode.ai/), powerful TUI application to test agents, not just for code generation
