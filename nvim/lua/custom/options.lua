@@ -49,7 +49,7 @@ vim.o.splitbelow = true
 
 -- Display of whitespace
 vim.o.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "| ", trail = "·", nbsp = "␣" }
 
 vim.o.winborder = "rounded"
 vim.o.autoread = true
