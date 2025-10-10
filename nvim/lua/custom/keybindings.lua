@@ -51,3 +51,8 @@ map("n", "-", "<CMD>lua MiniFiles.open()<CR>", { desc = "Open parent directory" 
 
 -- Format buffer manually if needed j
 map("n", "<leader>lf", vim.lsp.buf.format, { desc = "[F]ormat buffer" })
+
+-- Terminal quck guide
+-- Open terminal with leader [d]ebug and then [t]erminal
+-- Close terminal with C+\ and then C+N
+map("n", "<leader>dt", "<CMD>term<CR>", { desc = "Open [t]erminal" })
