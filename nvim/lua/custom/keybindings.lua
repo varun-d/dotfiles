@@ -10,8 +10,17 @@ map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 -- Clear highlight on pressing Escape after a search
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Diagnostic Keymaps
+-- Diagnostic Keymaps and autocmd
 map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- Set wrap for the quickfix window
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "qf",
+	callback = function()
+		vim.opt_local.wrap = true
+	end,
+	group = vim.api.nvim_create_augroup("QuickfixWrap", { clear = true }),
+})
 
 -- QOL keymaps like <leader>w or x to write, quit etc.
 map("n", "<leader>w", "<CMD>w<CR>", { desc = "[W]rite to file." })
