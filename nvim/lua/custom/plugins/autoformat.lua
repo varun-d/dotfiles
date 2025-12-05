@@ -53,7 +53,7 @@ return {
 							"--single-quote",
 							"--no-bracket-spacing",
 							"--print-width",
-							"80",
+							"120",
 							"--config-precedence",
 							"prefer-file",
 						}
