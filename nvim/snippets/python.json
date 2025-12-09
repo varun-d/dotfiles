@@ -1,0 +1,17 @@
+{
+  "Function": {
+    "prefix": "def",
+    "body": ["def ${1:fname}($2):", "\t${3:pass}"],
+    "description": "Function definition"
+  },
+  "Function w/ return type": {
+    "prefix": "deft",
+    "body": ["def ${1:fname}($2) -> ${3:None}:", "\t${4:pass}"],
+    "description": "Function definition with return type"
+  },
+  "class": {
+    "prefix": "class",
+    "body": ["class ${1:classname}:", "\t${2:pass}"],
+    "description": "Class definition"
+  }
+}

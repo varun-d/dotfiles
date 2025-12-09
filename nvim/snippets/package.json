@@ -1,0 +1,19 @@
+{
+  "name": "varund_snipps_2026",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./python.json"
+      },
+      {
+        "language": [
+          "markdown",
+          "md",
+          "rmd"
+        ],
+        "path": "./markdown.json"
+      }
+    ]
+  }
+}
