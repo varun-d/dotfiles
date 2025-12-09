@@ -1,7 +1,7 @@
 return {
 	{
 		"saghen/blink.cmp",
-		version = "1.5",
+		version = "1.8",
 		opts = {
 			keymap = { preset = "default" },
 
@@ -9,7 +9,11 @@ return {
 				nerd_font_variant = "mono",
 			},
 
-			completion = { documentation = { auto_show = true } },
+			signature = { enabled = true },
+			completion = {
+				menu = { border = "rounded" },
+				documentation = { auto_show = true },
+			},
 
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
