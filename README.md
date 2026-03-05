@@ -1,19 +1,24 @@
-# My dotfile configurations
+# My Dotfile Config
 
-## Design Principles for my IDE
+## Design principles
 
 1. Keep it simple
-2. Focus on top languages I work in
-3. Least plugins as possible
-4. Working formatters, LSP and autocomplete
+2. Least plugins as possible
+3. Working formatters, LSP and autocomplete
 
-> "The worst part about nvim configuration is all the distracting projects that need to be completed."
+> "The worst part about nvim configuration are all the distracting projects that need to be completed."
 
-## Simple Tmux config, no plugins
+## Tmux config, no plugins
+
+![Simple tmux setup](tmux.png)
 
 ### Step 1: Use CAPSLOCK as Ctrl
 
+Setting CAPSLOCK as Crtl is easy on my fingers.
+
 ### Step 2: Remap bindings for easy prefix, Ctrl + a (CAPSLOCK + A, easy to each)
+
+With CAPSLOCK as Ctrl, accessing tmux prefix is easy with Ctrl + a
 
 ```
 # Remap prefix from 'C-b' to 'C-a'
@@ -45,11 +50,10 @@ tmux attach-session -t $SESSION_NAME
 tmux attach-session # Connect with last session
 ```
 
-![Simple tmux setup](tmux.png)
-
 ## Neovim config
 
-Currently using Nvim 0.11. Nvim 0.12 setup was left halfway after realizing I am spending more time configuring nvim than working on my projects.
+Currently using Nvim 0.11.
+Tested Nvim 0.12 but abandoned it halfway. I was spending more time configuring nvim than coding.
 
 ![Neovim Start Screen with mini.files](nvim_start.png)
 
@@ -67,12 +71,12 @@ Currently using Nvim 0.11. Nvim 0.12 setup was left halfway after realizing I am
 - [x] blink cmp
 - [x] blink cmp, check fuzzy support error
 - [x] ~~add OpenCode support~~ Don't need for opencode / ai within nvim
-- [ ] do I need this? https://github.com/nvim-lua/plenary.nvim
+- [ ] do I need this? https://github.com/nvim-lua/plenary.nvim - no need so far
 
-## Other CLI Tools
+## Tools I use
 
-- [ ] [Lazygit](https://github.com/jesseduffield/lazygit), beaitifully simple way to git
-- [ ] [Lazydocker](https://github.com/jesseduffield/lazydocker), lazy way to purge unused containers and images
-- [ ] fzf, rg, bat for getter terminal experience
-- [ ] iTerm2 because I am lazy to redo everything in kitty or allacrity...
-- [ ] [OpenCode](https://opencode.ai/), powerful TUI application to test agents, not just for code generation
+- [x] iTerm2
+- [x] [Lazygit](https://github.com/jesseduffield/lazygit), beaitifully simple way to git
+- [x] [Lazydocker](https://github.com/jesseduffield/lazydocker), lazy way to purge unused containers and images
+- [x] fzf, rg, jq for getter terminal experience
+- [x] [OpenCode](https://opencode.ai/), claude code alternate when CC is down or when testing local on-prem models
