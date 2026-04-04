@@ -52,6 +52,5 @@ setkmap("n", "<leader>c", '"+yy', { desc = "[C]opy to clipboard" })
 setkmap({ "n", "x" }, "<leader>c", '"+yy<ESC>', { desc = "[C]opy to clipboard" })
 setkmap("n", "<leader>v", '"+p', { desc = "[V]Paste from clipboard" })
 
--- Oil Keymaps
-setkmap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
--- map("n", "-", "<CMD>lua MiniFiles.open()<CR>", { desc = "Open parent directory" })
+-- Mini Keymaps
+setkmap("n", "-", "<CMD>lua MiniFiles.open()<CR>", { desc = "Open parent directory" })

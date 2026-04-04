@@ -26,6 +26,7 @@ require("mini.pairs").setup()
 require("mini.surround").setup()
 require("mini.pick").setup({})
 require("mini.extra").setup({})
+require("mini.files").setup({})
 
 -- Which-key setup
 require("which-key").setup({
@@ -36,43 +37,39 @@ require("which-key").setup({
 		{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 	},
 })
--- TODO: Treesitter setup
-local treesit = require("nvim-treesitter")
-treesit.install({
-	"bash",
-	"c",
-	"dockerfile",
-	"fish",
-	"git_config",
-	"git_rebase",
-	"gitattributes",
-	"gitcommit",
-	"gitignore",
-	"go",
-	"gomod",
-	"gosum",
-	"html",
-	"javascript",
-	"json",
-	"lua",
-	"make",
-	"markdown",
-	"python",
-	"rust",
-	"sql",
-	"toml",
-	"tsx",
-	"typescript",
-	"yaml",
-	"zig",
-})
+-- -- TODO: Treesitter setup
+-- local treesit = require("nvim-treesitter")
+-- treesit.install({
+-- 	"bash",
+-- 	"c",
+-- 	"dockerfile",
+-- 	"fish",
+-- 	"git_config",
+-- 	"git_rebase",
+-- 	"gitattributes",
+-- 	"gitcommit",
+-- 	"gitignore",
+-- 	"go",
+-- 	"gomod",
+-- 	"gosum",
+-- 	"html",
+-- 	"javascript",
+-- 	"json",
+-- 	"lua",
+-- 	"make",
+-- 	"markdown",
+-- 	"python",
+-- 	"rust",
+-- 	"sql",
+-- 	"toml",
+-- 	"tsx",
+-- 	"typescript",
+-- 	"yaml",
+-- 	"zig",
+-- })
 
 -- Fidget LSP progress
 require("fidget").setup({})
-
--- Oil file explorer
-require("oil").setup()
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Completions
 require("blink.cmp").setup({
