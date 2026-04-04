@@ -1,12 +1,10 @@
-# My Dotfile Config
+# Dotfile Config
 
 ## Design principles
 
 1. Keep it simple
 2. Least plugins as possible
 3. Working formatters, LSP and autocomplete
-
-> "The worst part about nvim configuration are all the distracting projects that need to be completed."
 
 ## Tmux config, no plugins
 
@@ -50,7 +48,7 @@ tmux attach-session -t $SESSION_NAME
 tmux attach-session # Connect with last session
 ```
 
-## Neovim config
+## Neovim config 0.11
 
 Currently using Nvim 0.11.
 Tested Nvim 0.12 but abandoned it halfway. I was spending more time configuring nvim than coding.
@@ -61,7 +59,7 @@ Tested Nvim 0.12 but abandoned it halfway. I was spending more time configuring 
 
 ### TODO
 
-- [x] update to latest NeoVim (0.12)
+- [x] update to latest NeoVim (0.12), did not use it when I was on nighly
 - [x] simplify LSP config, start with Lua Lsp
 - [x] python, go, rust lsp and formatters
 - [x] React, and Typescript and Tailwind support (if possible)
@@ -80,3 +78,13 @@ Tested Nvim 0.12 but abandoned it halfway. I was spending more time configuring 
 - [x] [Lazydocker](https://github.com/jesseduffield/lazydocker), lazy way to purge unused containers and images
 - [x] fzf, rg, jq for getter terminal experience
 - [x] [OpenCode](https://opencode.ai/), claude code alternate when CC is down or when testing local on-prem models
+
+### Nvim 0.12 checklist
+
+- [ ] confirm all current settings are working and notice breaking changes
+- [ ] treesitter cli?
+- [ ] File explorer, mini
+- [ ] confirm blink cmp
+- [ ] confirm markdown lsp
+- [ ] rename config from nvim_nightly to nvim12
+- [ ] run with n12 command and then switch to nvim
