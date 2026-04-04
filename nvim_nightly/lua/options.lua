@@ -1,5 +1,10 @@
--- My personal oions
+-- Short for vim.opt
 local o = vim.opt
+
+-- UI2, experimental
+require("vim._core.ui2").enable({
+	enable = true,
+})
 
 -- Timing values
 o.updatetime = 250
@@ -44,11 +49,10 @@ o.undofile = true
 
 -- Split windows settings
 o.splitright = true
-o.splitbelow = true
 
 -- Display of whitespace
 o.list = true
-o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Windows
 o.winborder = "rounded"
