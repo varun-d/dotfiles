@@ -22,11 +22,10 @@ require("lsp")
 vim.pack.add({
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
-	-- Fuzzy finder, moving away from Telescope. Will enable later
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	{ src = "https://github.com/j-hui/fidget.nvim" },
 	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("*") },
-	-- { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate" },
 
 	-- Color schemes
 	{ src = "https://github.com/sainnhe/gruvbox-material", name = "ct_gruvbox" },
@@ -70,36 +69,45 @@ setkmap("n", "<leader>sd", "<CMD>FzfLua diagnostics_workspace<CR>", { desc = "Se
 setkmap("n", "<leader>sk", "<CMD>FzfLua keymaps<CR>", { desc = "Search [K]eymaps" })
 setkmap("n", "<leader>gs", "<CMD>FzfLua git_status<CR>", { desc = "Git [S]tatus Fzf" })
 
--- -- TODO: Treesitter setup
--- local treesit = require("nvim-treesitter")
--- treesit.install({
--- 	"bash",
--- 	"c",
--- 	"dockerfile",
--- 	"fish",
--- 	"git_config",
--- 	"git_rebase",
--- 	"gitattributes",
--- 	"gitcommit",
--- 	"gitignore",
--- 	"go",
--- 	"gomod",
--- 	"gosum",
--- 	"html",
--- 	"javascript",
--- 	"json",
--- 	"lua",
--- 	"make",
--- 	"markdown",
--- 	"python",
--- 	"rust",
--- 	"sql",
--- 	"toml",
--- 	"tsx",
--- 	"typescript",
--- 	"yaml",
--- 	"zig",
--- })
+-- Treesitter installs. No-Op if already installed.
+-- https://github.com/nvim-treesitter/nvim-treesitter
+-- Used to have an ensure_installed table
+require("nvim-treesitter").install({
+	"bash",
+	"c",
+	"cpp",
+	"css",
+	"dockerfile",
+	"fish",
+	"git_config",
+	"git_rebase",
+	"gitattributes",
+	"gitcommit",
+	"gitignore",
+	"go",
+	"gomod",
+	"gosum",
+	"html",
+	"javascript",
+	"json",
+	"jsx",
+	"lua",
+	"make",
+	"markdown",
+	"markdown_inline",
+	"python",
+	"rust",
+	"sql",
+	"svelte",
+	"toml",
+	"tsx",
+	"typescript",
+	"vim",
+	"vue",
+	"yaml",
+	"zig",
+	"zsh",
+})
 
 -- Fidget LSP progress
 require("fidget").setup({})
