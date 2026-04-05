@@ -13,6 +13,10 @@
       "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
       "src": "https://github.com/j-hui/fidget.nvim"
     },
+    "fzf-lua": {
+      "rev": "abacb0693d7a37de9e85e6fcb2d22d848cb75cef",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
     "mini.nvim": {
       "rev": "402ee6c6ec8ea44b22330446c8fb4e615fd3953e",
       "src": "https://github.com/nvim-mini/mini.nvim"
