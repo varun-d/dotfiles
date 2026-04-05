@@ -1,6 +1,6 @@
 -- Simple function
 local function sayHello()
-    print("Hello!")
+   print("Hello!")
 end
 
 -- Call fx
