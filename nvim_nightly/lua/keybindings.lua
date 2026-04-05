@@ -51,6 +51,3 @@ setkmap("n", "<C-u>", "<C-u>zz", { desc = "Move up in buffer and center with zz"
 setkmap("n", "<leader>c", '"+yy', { desc = "[C]opy to clipboard" })
 setkmap({ "n", "x" }, "<leader>c", '"+yy<ESC>', { desc = "[C]opy to clipboard" })
 setkmap("n", "<leader>v", '"+p', { desc = "[V]Paste from clipboard" })
-
--- Mini Keymaps
-setkmap("n", "-", "<CMD>lua MiniFiles.open()<CR>", { desc = "Open parent directory" })
