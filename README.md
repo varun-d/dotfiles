@@ -85,8 +85,8 @@ Tested Nvim 0.12 but abandoned it halfway. I was spending more time configuring 
 - [x] confirm blink cmp
 - [x] confirm markdown lsp
 - [x] FzfLua and git help
-- [ ] treesitter cli done, next tree sitter and then LSP
-- [ ] autoformat
+- [x] treesitter cli done, next tree sitter and then LSP
+- [x] autoformat
 - [ ] rename config from nvim_nightly to nvim12
-- [ ] confirm all current settings are working and notice breaking changes
+- [x] confirm all current settings are working and notice breaking changes
 - [ ] run with n12 command and then switch to nvim
