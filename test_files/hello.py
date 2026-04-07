@@ -2,7 +2,8 @@ import os
 import sys
 from PIL import Image
 
-def create_gif(image_paths, output_path="output.gif", duration=500, loop=0):
+
+def create_gif(image_paths, output_path="output.gif", duration=500, loop=0) -> str:
     """
     Create a GIF from a list of image paths.
 
@@ -35,7 +36,7 @@ def create_gif(image_paths, output_path="output.gif", duration=500, loop=0):
         save_all=True,
         append_images=frames[1:],
         duration=duration,
-        loop=loop
+        loop=loop,
     )
 
     print(f"GIF saved to {output_path}")
