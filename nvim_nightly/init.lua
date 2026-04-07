@@ -11,24 +11,32 @@ require("options")
 -- Import foundation keybindings, not plugin keybindings
 require("keybindings")
 
--- Import languaeg server setup
-require("lsp")
-
 --
 -- PLUGINS
 --
 
 -- Flat plugins file, break it down into multiple files if needed
 vim.pack.add({
-	{ src = "https://github.com/folke/which-key.nvim" },
+	-- The GOAT, mini.nvim. Use selected mini plugins as needed
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
+	-- Sorry Telescope, I want a bit of simplicity
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
-	{ src = "https://github.com/j-hui/fidget.nvim" },
-	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("*") },
+	-- Tree-sitter
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate" },
-
-	-- Color schemes
+	-- LSP Installers. Install all LSPs in one location require('data') folder /mason/bin
+	{ src = "https://github.com/mason-org/mason.nvim" },
+	-- Making LSP configs easier, you can copy-paste but this is just easier
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	-- Blink Completions
+	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("*") },
+	-- Formatting and Linting
+	{ src = "https://github.com/stevearc/conform.nvim" },
+	-- Color schemes and visual candies
 	{ src = "https://github.com/sainnhe/gruvbox-material", name = "ct_gruvbox" },
+	-- Show keybindings as you type
+	{ src = "https://github.com/folke/which-key.nvim" },
+	-- Visual display for $progress, based of LSPs that have loading states
+	{ src = "https://github.com/j-hui/fidget.nvim" },
 })
 
 -- Which-key setup
@@ -72,6 +80,8 @@ setkmap("n", "<leader>gs", "<CMD>FzfLua git_status<CR>", { desc = "Git [S]tatus 
 -- Treesitter installs. No-Op if already installed.
 -- https://github.com/nvim-treesitter/nvim-treesitter
 -- Used to have an ensure_installed table
+-- Make sure you have the tree-sitter-cli installed and not just tree-sitter library!
+-- For example, on Mac: brew install tree-sitter-cli
 require("nvim-treesitter").install({
 	"bash",
 	"c",
@@ -109,6 +119,12 @@ require("nvim-treesitter").install({
 	"zsh",
 })
 
+-- LSP
+require("mason").setup()
+
+-- Import LSP UX
+require("lsp")
+
 -- Fidget LSP progress
 require("fidget").setup({})
 
@@ -119,6 +135,54 @@ require("blink.cmp").setup({
 		documentation = {
 			auto_show = true,
 			auto_show_delay_ms = 200,
+		},
+	},
+})
+vim.lsp.config["*"] = {
+	require("blink.cmp").get_lsp_capabilities(),
+}
+
+-- Linter and Formatter settings
+require("conform").setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+		javascript = { "prettier" },
+		javascriptreact = { "prettier" },
+		typescript = { "prettier" },
+		typescriptreact = { "prettier" },
+		json = { "prettier" },
+		css = { "prettier" },
+		scss = { "prettier" },
+		less = { "prettier" },
+		html = { "prettier" },
+		yaml = { "prettier" },
+		markdown = { "prettier" },
+		python = { "ruff", "ruff_format" },
+	},
+	format_on_save = {
+		-- These options will be passed to conform.format()
+		timeout_ms = 500,
+		lsp_format = "fallback",
+	},
+	formatters = {
+		prettier = {
+			prepend_args = function()
+				return {
+					"--no-semi",
+					"--single-quote",
+					"--no-bracket-spacing",
+					"--print-width",
+					"120",
+					"--config-precedence",
+					"prefer-file",
+				}
+			end,
+		},
+		stylua = {
+			arg = {
+				"--indent-type",
+				"Spaces",
+			},
 		},
 	},
 })
