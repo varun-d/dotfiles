@@ -1,6 +1,10 @@
 local setkmap = vim.keymap.set
 local silent = { silent = true }
 
+-- Terminal things, have nerd font ideally
+-- https://www.nerdfonts.com/
+local have_nerd_font = true
+
 -- Set Leader Key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -125,6 +129,27 @@ require("mason").setup()
 -- Import LSP UX
 require("lsp")
 
+-- Diagnostics
+-- See :help vim.diagnostic.Opts
+vim.diagnostic.config({
+	severity_sort = true,
+	float = { border = "rounded", source = "if_many" },
+	underline = { severity = vim.diagnostic.severity.ERROR },
+	signs = have_nerd_font and {
+		text = {
+			[vim.diagnostic.severity.ERROR] = " ",
+			[vim.diagnostic.severity.WARN] = "󰀪 ",
+			[vim.diagnostic.severity.INFO] = "󰋽 ",
+			[vim.diagnostic.severity.HINT] = "󰌶 ",
+		},
+	} or {},
+	virtual_text = {
+		source = "if_many",
+		spacing = 2,
+		prefix = "",
+	},
+})
+
 -- Fidget LSP progress
 require("fidget").setup({})
 
@@ -187,12 +212,22 @@ require("conform").setup({
 	},
 })
 
+--
+-- VISUALS AND COLORSCHEMES
+--
+-- Enable true color
+vim.opt.termguicolors = true
+
+-- Inlayhints and LSP colors
+vim.g.gruvbox_material_inlay_hints_background = "dimmed"
+vim.g.gruvbox_material_diagnostic_text_highlight = 1
+vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
+
 -- Color Scheme, switch it here
 vim.cmd.colorscheme("gruvbox-material")
 -- vim.cmd.colorscheme("techbase")
 -- vim.cmd.colorscheme("catppuccin-macchiato")
 
---
 -- AUTOCOMMANDS
 --
 
