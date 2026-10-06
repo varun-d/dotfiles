@@ -126,9 +126,15 @@ require("nvim-treesitter").install({
 -- LSP
 require("mason").setup()
 
--- Import LSP UX
+-- Import LSP UX and Autocommands
 require("lsp")
 
+-- Import LSP Configs
+require("lspconfigs")
+
+vim.lsp.config["*"] = {
+	capabilities = require("blink.cmp").get_lsp_capabilities(),
+}
 -- Diagnostics
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config({
@@ -163,9 +169,6 @@ require("blink.cmp").setup({
 		},
 	},
 })
-vim.lsp.config["*"] = {
-	require("blink.cmp").get_lsp_capabilities(),
-}
 
 -- Linter and Formatter settings
 require("conform").setup({
