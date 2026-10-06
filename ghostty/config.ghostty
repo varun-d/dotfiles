@@ -1,0 +1,63 @@
+# ~/.dotfiles/ghostty/config.ghostty
+
+# ─────────────────────────────────────
+# Font
+# ─────────────────────────────────────
+
+font-size = 16
+adjust-cell-height=5%
+
+# ─────────────────────────────────────
+# Window
+# ─────────────────────────────────────
+
+window-padding-x = 8
+window-padding-y = 8
+macos-titlebar-style = hidden
+
+
+window-save-state = always
+window-inherit-font-size = true
+
+# ─────────────────────────────────────
+# Appearance
+# ─────────────────────────────────────
+
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+
+cursor-style = block
+cursor-style-blink = true
+
+# ─────────────────────────────────────
+# Shell
+# ─────────────────────────────────────
+
+shell-integration = detect
+
+# ─────────────────────────────────────
+# Quality of life
+# ─────────────────────────────────────
+
+copy-on-select = clipboard
+confirm-close-surface = true
+
+# Make URLs clickable with Cmd+click
+link-url = true
+
+# ─────────────────────────────────────
+# Keybindings
+# ─────────────────────────────────────
+
+# Font size
+keybind = cmd+equal=increase_font_size:1
+keybind = cmd+minus=decrease_font_size:1
+keybind = cmd+0=reset_font_size
+
+# New tab
+keybind = cmd+t=new_tab
+
+# Close tab/window
+keybind = cmd+w=close_surface
+
+# Reload config
+keybind = cmd+shift+,=reload_config
