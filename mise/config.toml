@@ -1,0 +1,23 @@
+# Global dev tools: LSP servers, formatters and linters.
+# Shared by Neovim, Claude Code and anything else that looks on PATH.
+# New machine: `brew install mise && mise install`
+
+[tools]
+# Python
+ty = "latest"
+ruff = "latest"
+
+# Lua
+lua-language-server = "latest"
+stylua = "latest"
+
+# Go (needs go on PATH)
+"go:golang.org/x/tools/gopls" = "latest"
+
+# Web (needs node/npm on PATH)
+# Pinned to 6: typescript 7 no longer ships tsserver, which ts_ls needs
+"npm:typescript" = "6"
+"npm:typescript-language-server" = "latest"
+"npm:@tailwindcss/language-server" = "latest"
+"npm:prettier" = "latest"
+"github:csskit/csskit" = "latest"
