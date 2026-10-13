@@ -1,5 +1,4 @@
 local setkmap = vim.keymap.set
-local silent = { silent = true }
 
 -- Terminal things, have nerd font ideally
 -- https://www.nerdfonts.com/
@@ -19,6 +18,17 @@ require("keybindings")
 -- PLUGINS
 --
 
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		if ev.data.spec.name == "nvim-treesitter" and ev.data.kind ~= "delete" then
+			if not ev.data.active then
+				vim.cmd.packadd("nvim-treesitter")
+			end
+			vim.cmd("TSUpdate")
+		end
+	end,
+})
+
 -- Flat plugins file, break it down into multiple files if needed
 vim.pack.add({
 	-- The GOAT, mini.nvim. Use selected mini plugins as needed
@@ -26,9 +36,7 @@ vim.pack.add({
 	-- Sorry Telescope, I want a bit of simplicity
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	-- Tree-sitter
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate" },
-	-- LSP Installers. Install all LSPs in one location require('data') folder /mason/bin
-	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	-- Making LSP configs easier, you can copy-paste but this is just easier
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	-- Blink Completions
@@ -66,7 +74,7 @@ setkmap("n", "<leader>go", "<CMD>lua MiniDiff.toggle_overlay()<CR>", { desc = "G
 
 -- MiniFiles
 require("mini.files").setup({})
-setkmap("n", "-", "<CMD>lua MiniFiles.open()<CR>", { desc = "Open parent directory" }, silent)
+setkmap("n", "-", "<CMD>lua MiniFiles.open()<CR>", { desc = "Open parent directory" })
 
 -- fzf-lua keymaps.
 -- https://github.com/ibhagwan/fzf-lua
@@ -104,7 +112,6 @@ require("nvim-treesitter").install({
 	"html",
 	"javascript",
 	"json",
-	"jsx",
 	"lua",
 	"make",
 	"markdown",
@@ -123,11 +130,24 @@ require("nvim-treesitter").install({
 	"zsh",
 })
 
+-- Setup treeesitting for all files
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("treesitter_start", { clear = true }),
+	callback = function(ev)
+		if pcall(vim.treesitter.start, ev.buf) then
+			vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		end
+	end,
+})
+
 -- LSP
-require("mason").setup()
+-- LSP servers, formatters and linters are installed by mise, not by a plugin.
+-- See ~/.dotfiles/mise/config.toml. New machine: `brew install mise && mise install`
+-- Shims go first on PATH so nvim finds them even when the shell has not activated mise.
+vim.env.PATH = vim.fn.expand("~/.local/share/mise/shims") .. ":" .. vim.env.PATH
 
 -- Import LSP UX and Autocommands
-require("lsp")
+require("lspux")
 
 -- Import LSP Configs
 require("lspconfigs")
@@ -185,7 +205,7 @@ require("conform").setup({
 		html = { "prettier" },
 		yaml = { "prettier" },
 		markdown = { "prettier" },
-		python = { "ruff", "ruff_format" },
+		python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
@@ -205,12 +225,6 @@ require("conform").setup({
 					"prefer-file",
 				}
 			end,
-		},
-		stylua = {
-			arg = {
-				"--indent-type",
-				"Spaces",
-			},
 		},
 	},
 })
