@@ -1,21 +1,5 @@
 -- lua/lspconfigs.lua
 
-vim.lsp.config("ts_ls", {
-	cmd = { "typescript-language-server", "--stdio" },
-	filetypes = {
-		"javascript",
-		"javascriptreact",
-		"typescript",
-		"typescriptreact",
-	},
-	root_markers = {
-		"tsconfig.json",
-		"jsconfig.json",
-		"package.json",
-		".git",
-	},
-})
-
 vim.lsp.config("tailwindcss", {
 	filetypes = { "html", "css", "scss", "less", "javascriptreact", "typescriptreact" },
 })
@@ -25,6 +9,21 @@ vim.lsp.config("csskit", {
 	filetypes = { "css", "scss", "less" },
 })
 
-vim.lsp.enable("tailwindcss")
-vim.lsp.enable("ts_ls")
-vim.lsp.enable("csskit")
+vim.lsp.config("gopls", {
+	settings = {
+		gopls = {
+			hints = {
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				constantValues = true,
+				functionTypeParameters = true,
+				parameterNames = true,
+				rangeVariableTypes = true,
+			},
+		},
+	},
+})
+
+-- Enabled new LSPs here
+vim.lsp.enable({ "ts_ls", "tailwindcss", "csskit", "gopls", "lua_ls", "ty" })

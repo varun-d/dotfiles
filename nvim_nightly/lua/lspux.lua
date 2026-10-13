@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			require("fzf-lua").lsp_references()
 		end, "[G]oto [R]eferences")
 		map("grd", function()
-			require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
+			require("fzf-lua").lsp_definitions({ jump1 = true })
 		end, "[G]oto [d]efinition")
 		map("grD", function()
 			require("fzf-lua").lsp_declarations()
