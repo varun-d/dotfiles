@@ -16,28 +16,15 @@ vim.lsp.config("ts_ls", {
 	},
 })
 
-vim.lsp.config("tailwindcss-language-server", {
-	cmd = { "tailwindcss-language-server", "--stdio" },
-	filetypes = {
-		"html",
-		"css",
-		"scss",
-		"less",
-		"javascriptreact",
-		"typescriptreact",
-	},
-	root_markers = {
-		"tailwind.config.js",
-		"tailwind.config.cjs",
-		"tailwind.config.mjs",
-		"tailwind.config.ts",
-		"postcss.config.js",
-		"postcss.config.cjs",
-		"postcss.config.mjs",
-		"package.json",
-		".git",
-	},
+vim.lsp.config("tailwindcss", {
+	filetypes = { "html", "css", "scss", "less", "javascriptreact", "typescriptreact" },
 })
 
+vim.lsp.config("csskit", {
+	cmd = { "csskit", "lsp" },
+	filetypes = { "css", "scss", "less" },
+})
+
+vim.lsp.enable("tailwindcss")
 vim.lsp.enable("ts_ls")
-vim.lsp.enable("tailwindcss-language-server")
+vim.lsp.enable("csskit")
