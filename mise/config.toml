@@ -15,9 +15,9 @@ stylua = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 
 # Web (needs node/npm on PATH)
-# Pinned to 6: typescript 7 no longer ships tsserver, which ts_ls needs
+# vtsls bundles its own typescript; this one is just for tsc in the shell
 "npm:typescript" = "6"
-"npm:typescript-language-server" = "latest"
+"npm:@vtsls/language-server" = "latest"
 "npm:@tailwindcss/language-server" = "latest"
 "npm:prettier" = "latest"
 "github:csskit/csskit" = "latest"
