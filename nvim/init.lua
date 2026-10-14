@@ -1,10 +1,8 @@
-local setkmap = vim.keymap.set
-
 -- Terminal things, have nerd font ideally
 -- https://www.nerdfonts.com/
-local have_nerd_font = true
+vim.g.have_nerd_font = true
 
--- Set Leader Key
+-- Set Leader Key as Space
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -16,235 +14,19 @@ require("keybindings")
 
 --
 -- PLUGINS
+-- Each file in lua/plugins/ adds its own plugin(s), then sets them up with keymaps.
+-- Please keep order in mind: lsp needs blink (capabilities) and fzf (LspAttach keymaps).
 --
-
-vim.api.nvim_create_autocmd("PackChanged", {
-	callback = function(ev)
-		if ev.data.spec.name == "nvim-treesitter" and ev.data.kind ~= "delete" then
-			if not ev.data.active then
-				vim.cmd.packadd("nvim-treesitter")
-			end
-			vim.cmd("TSUpdate")
-		end
-	end,
-})
-
--- Flat plugins file, break it down into multiple files if needed
-vim.pack.add({
-	-- The GOAT, mini.nvim. Use selected mini plugins as needed
-	{ src = "https://github.com/nvim-mini/mini.nvim" },
-	-- Sorry Telescope, I want a bit of simplicity
-	{ src = "https://github.com/ibhagwan/fzf-lua" },
-	-- Tree-sitter
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-	-- Making LSP configs easier, you can copy-paste but this is just easier
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	-- Blink Completions
-	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("*") },
-	-- Formatting and Linting
-	{ src = "https://github.com/stevearc/conform.nvim" },
-	-- Color schemes and visual candies
-	{ src = "https://github.com/sainnhe/gruvbox-material", name = "ct_gruvbox" },
-	-- Show keybindings as you type
-	{ src = "https://github.com/folke/which-key.nvim" },
-	-- Visual display for $progress, based of LSPs that have loading states
-	{ src = "https://github.com/j-hui/fidget.nvim" },
-})
-
--- Which-key setup
--- https://github.com/folke/which-key.nvim
-require("which-key").add({
-	{ "<leader>s", group = "[S]earch" },
-	{ "<leader>d", group = "[D]ebug" },
-	{ "<leader>t", group = "[T]oggle" },
-	{ "<leader>g", group = "[G]it Stuff", mode = { "n", "v" } },
-})
-
--- Mini
--- https://github.com/nvim-mini/mini.nvim
-require("mini.statusline").setup()
-require("mini.tabline").setup()
-require("mini.icons").setup()
-require("mini.pairs").setup()
-require("mini.surround").setup()
-
--- MiniDiff
-require("mini.diff").setup()
-setkmap("n", "<leader>go", "<CMD>lua MiniDiff.toggle_overlay()<CR>", { desc = "Git Toggle Diff [O]verlay" })
-
--- MiniFiles
-require("mini.files").setup({})
-setkmap("n", "-", "<CMD>lua MiniFiles.open()<CR>", { desc = "Open parent directory" })
-
--- fzf-lua keymaps.
--- https://github.com/ibhagwan/fzf-lua
---
-require("fzf-lua").setup()
-setkmap("n", "<leader>sf", "<CMD>FzfLua files<CR>", { desc = "Search [F]iles" })
-setkmap("n", "<leader><leader>", "<CMD>FzfLua buffers<CR>", { desc = "Search [B]uffer" })
-setkmap("n", "<leader>sg", "<CMD>FzfLua live_grep<CR>", { desc = "Search by [G]rep" })
-setkmap("n", "<leader>sh", "<CMD>FzfLua helptags<CR>", { desc = "Search [H]elp" })
-setkmap("n", "<leader>sq", "<CMD>FzfLua diagnostics_document<CR>", { desc = "Search [Q]uickfix" })
-setkmap("n", "<leader>sd", "<CMD>FzfLua diagnostics_workspace<CR>", { desc = "Search Workspace [D]iagnostics" })
-setkmap("n", "<leader>sk", "<CMD>FzfLua keymaps<CR>", { desc = "Search [K]eymaps" })
-setkmap("n", "<leader>gs", "<CMD>FzfLua git_status<CR>", { desc = "Git [S]tatus Fzf" })
-
--- Treesitter installs. No-Op if already installed.
--- https://github.com/nvim-treesitter/nvim-treesitter
--- Used to have an ensure_installed table
--- Make sure you have the tree-sitter-cli installed and not just tree-sitter library!
--- For example, on Mac: brew install tree-sitter-cli
-require("nvim-treesitter").install({
-	"bash",
-	"c",
-	"cpp",
-	"css",
-	"dockerfile",
-	"fish",
-	"git_config",
-	"git_rebase",
-	"gitattributes",
-	"gitcommit",
-	"gitignore",
-	"go",
-	"gomod",
-	"gosum",
-	"html",
-	"javascript",
-	"json",
-	"lua",
-	"make",
-	"markdown",
-	"markdown_inline",
-	"python",
-	"rust",
-	"sql",
-	"svelte",
-	"toml",
-	"tsx",
-	"typescript",
-	"vim",
-	"vue",
-	"yaml",
-	"zig",
-	"zsh",
-})
-
--- Setup treeesitting for all files
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("treesitter_start", { clear = true }),
-	callback = function(ev)
-		if pcall(vim.treesitter.start, ev.buf) then
-			vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-		end
-	end,
-})
-
--- LSP
--- LSP servers, formatters and linters are installed by mise, not by a plugin.
--- See ~/.dotfiles/mise/config.toml. New machine: `brew install mise && mise install`
--- Shims go first on PATH so nvim finds them even when the shell has not activated mise.
-vim.env.PATH = vim.fn.expand("~/.local/share/mise/shims") .. ":" .. vim.env.PATH
-
--- Import LSP UX and Autocommands
-require("lspux")
-
--- Import LSP Configs
-require("lspconfigs")
-
-vim.lsp.config["*"] = {
-	capabilities = require("blink.cmp").get_lsp_capabilities(),
-}
--- Diagnostics
--- See :help vim.diagnostic.Opts
-vim.diagnostic.config({
-	severity_sort = true,
-	float = { border = "rounded", source = "if_many" },
-	underline = { severity = vim.diagnostic.severity.ERROR },
-	signs = have_nerd_font and {
-		text = {
-			[vim.diagnostic.severity.ERROR] = " ",
-			[vim.diagnostic.severity.WARN] = "󰀪 ",
-			[vim.diagnostic.severity.INFO] = "󰋽 ",
-			[vim.diagnostic.severity.HINT] = "󰌶 ",
-		},
-	} or {},
-	virtual_text = {
-		source = "if_many",
-		spacing = 2,
-		prefix = "",
-	},
-})
-
--- Fidget LSP progress
-require("fidget").setup({})
-
--- Completions
-require("blink.cmp").setup({
-	fuzzy = { implementation = "prefer_rust_with_warning" },
-	completion = {
-		documentation = {
-			auto_show = true,
-			auto_show_delay_ms = 200,
-		},
-	},
-})
-
--- Linter and Formatter settings
-require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		javascript = { "prettier" },
-		javascriptreact = { "prettier" },
-		typescript = { "prettier" },
-		typescriptreact = { "prettier" },
-		json = { "prettier" },
-		css = { "prettier" },
-		scss = { "prettier" },
-		less = { "prettier" },
-		html = { "prettier" },
-		yaml = { "prettier" },
-		markdown = { "prettier" },
-		python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
-	},
-	format_on_save = {
-		-- These options will be passed to conform.format()
-		timeout_ms = 500,
-		lsp_format = "fallback",
-	},
-	formatters = {
-		prettier = {
-			prepend_args = function()
-				return {
-					"--no-semi",
-					"--single-quote",
-					"--no-bracket-spacing",
-					"--print-width",
-					"120",
-					"--config-precedence",
-					"prefer-file",
-				}
-			end,
-		},
-	},
-})
+require("plugins.colorscheme")
+require("plugins.mini")
+require("plugins.whichkey")
+require("plugins.fzf")
+require("plugins.treesitter")
+require("plugins.blink")
+require("plugins.lsp")
+require("plugins.conform")
 
 --
--- VISUALS AND COLORSCHEMES
---
--- Enable true color
-vim.opt.termguicolors = true
-
--- Inlayhints and LSP colors
-vim.g.gruvbox_material_inlay_hints_background = "dimmed"
-vim.g.gruvbox_material_diagnostic_text_highlight = 1
-vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-
--- Color Scheme, switch it here
-vim.cmd.colorscheme("gruvbox-material")
--- vim.cmd.colorscheme("techbase")
--- vim.cmd.colorscheme("catppuccin-macchiato")
-
 -- AUTOCOMMANDS
 --
 
@@ -258,3 +40,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
+
+-- Thank you TJ DeVries for inspiring me to get going on this
