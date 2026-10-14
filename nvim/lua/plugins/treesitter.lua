@@ -22,6 +22,7 @@ vim.pack.add({
 -- Make sure you have the tree-sitter-cli installed and not just tree-sitter library!
 -- For example, on Mac: brew install tree-sitter-cli
 require("nvim-treesitter").install({
+	"astro",
 	"bash",
 	"c",
 	"cpp",
