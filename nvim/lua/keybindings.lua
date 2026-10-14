@@ -19,9 +19,6 @@ setkmap("n", "<down>", '<cmd>echo "Use j to move down!"<CR>')
 -- Clear highlight on pressing Escape after a search
 setkmap("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- [D]iagnostic/[D]ebug Keymaps:
-setkmap("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "[D]iagnostic [Q]uickfix list" })
-
 -- Set wrap for the quickfix window
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "qf",
