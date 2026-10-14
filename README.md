@@ -69,15 +69,16 @@ Tested Nvim 0.12 but abandoned it halfway. I was spending more time configuring 
 - [x] blink cmp
 - [x] blink cmp, check fuzzy support error
 - [x] ~~add OpenCode support~~ Don't need for opencode / ai within nvim
-- [ ] do I need this? https://github.com/nvim-lua/plenary.nvim - no need so far
+- [x] do I need this? https://github.com/nvim-lua/plenary.nvim - no need so far, no I don't
 
 ## Tools I use
 
-- [x] iTerm2
+- [x] ~~iTerm2~~ Ghostty
 - [x] [Lazygit](https://github.com/jesseduffield/lazygit), beaitifully simple way to git
 - [x] [Lazydocker](https://github.com/jesseduffield/lazydocker), lazy way to purge unused containers and images
 - [x] fzf, rg, jq for getter terminal experience
 - [x] [OpenCode](https://opencode.ai/), claude code alternate when CC is down or when testing local on-prem models
+- [ ] MLX for local model inference on Apple Silicon
 
 ### Nvim 0.12 checklist
 
@@ -87,6 +88,7 @@ Tested Nvim 0.12 but abandoned it halfway. I was spending more time configuring 
 - [x] FzfLua and git help
 - [x] treesitter cli done, next tree sitter and then LSP
 - [x] autoformat
-- [ ] rename config from nvim_nightly to nvim12
+- [x] rename config from nvim_nightly to nvim
 - [x] confirm all current settings are working and notice breaking changes
-- [ ] run with n12 command and then switch to nvim
+- [x] run with n12 command and then switch to nvim
+- [x] Complete switch to nvim .12
