@@ -1,4 +1,3 @@
--- In your main init.lua or a plugin file
 vim.wo.wrap = true
 vim.api.nvim_create_autocmd("Syntax", {
 	pattern = "markdown",
