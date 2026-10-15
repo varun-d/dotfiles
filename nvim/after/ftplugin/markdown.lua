@@ -1,5 +1,5 @@
 vim.wo.wrap = true
-vim.bo.textwidth = 80
+vim.bo.textwidth = 120
 vim.wo.linebreak = true
 vim.opt_local.spell = true
 vim.opt_local.spelllang = "en_us"
