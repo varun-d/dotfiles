@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+exec claude -p "$*" \
+  --model haiku \
+  --effort low \
+  --no-session-persistence \
+  --safe-mode \
+  --tools "" \
+  --append-system-prompt "Answer in at most 2 short lines. Answer, commands and/or keybindings first, no preamble."
