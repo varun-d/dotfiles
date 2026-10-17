@@ -1,5 +1,8 @@
 # ~/.dotfiles/ghostty/config.ghostty
 
+# Set working directory
+working-directory = "~/Projects"
+
 # ─────────────────────────────────────
 # Font
 # ─────────────────────────────────────
@@ -24,7 +27,7 @@ window-inherit-font-size = true
 # ─────────────────────────────────────
 
 theme = dark:Catppuccin Mocha,light:Catppuccin Latte
-
+# custom-shader = ghostty-shaders/tft.glsl
 cursor-style = block
 cursor-style-blink = true
 
