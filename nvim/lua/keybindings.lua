@@ -16,6 +16,8 @@ setkmap("n", "<right>", '<cmd>echo "Use l to move right!"<CR>')
 setkmap("n", "<up>", '<cmd>echo "Use k to move up!"<CR>')
 setkmap("n", "<down>", '<cmd>echo "Use j to move down!"<CR>')
 
+-- Escape <Esc> special uses
+setkmap("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 -- Clear highlight on pressing Escape after a search
 setkmap("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
