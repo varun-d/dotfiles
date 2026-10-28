@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
-# ~/.local/bin/tmx <session>
+# ~/.local/bin/tmx <session> [dir]
 set -euo pipefail
-s=${1:?usage: tmx <session>}
+s=${1:?usage: tmx <session> [dir]}
+d=${2:-$PWD}
 
 if ! tmux has-session -t "=$s" 2>/dev/null; then
-  tmux new-session -d -s "$s" -n term
-  tmux new-window  -t "$s:" -n nvim
-  tmux new-window  -t "$s:" -n ai
-  tmux new-window  -t "$s:" -n term
+  tmux new-session -d -s "$s" -c "$d" -n term
+  tmux new-window  -t "$s:" -c "$d" -n nvim
+  tmux new-window  -t "$s:" -c "$d" -n ai
+  tmux new-window  -t "$s:" -c "$d" -n term
   tmux select-window -t "$s:^"   # first window, regardless of base-index
 fi
 

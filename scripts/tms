@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# ~/.local/bin/tms [dir]
+# Pick a project folder with fzf and open it as a tmux session (via tmx)
+set -euo pipefail
+roots=${TMS_PATHS:-$HOME/Projects}
+
+if [ $# -gt 0 ]; then
+  d=$1
+else
+  # shellcheck disable=SC2086
+  d=$(fd --type d --max-depth 1 --hidden --exclude .git . $roots \
+    | sed "s|/$||; s|^$HOME|~|" \
+    | fzf --prompt 'project> ' --reverse) || exit 0
+  d=${d/#\~/$HOME}
+fi
+[ -d "$d" ] || { echo "tms: not a directory: $d" >&2; exit 1; }
+
+d=$(cd "$d" && pwd)
+name=$(basename "$d")
+name=${name#.}            # .dotfiles -> dotfiles
+name=${name//[.:]/_}      # tmux rejects . and : in session names
+
+exec tmx "$name" "$d"
