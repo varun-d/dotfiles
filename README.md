@@ -39,7 +39,20 @@ prefix + l #Switch to last used window
 
 For example, `0: server, 1: nvim, 2: term, 3: git, 4: ai`
 
-### [D]etatch session and attach-session
+### Open a project as a session: `tms` or `prefix + f`
+
+`tms` lists folders in `~/Projects` with fzf. Picking one opens (or reattaches to) a session named after the folder, with
+every window starting in it. Inside tmux, `prefix + f` opens the same picker in a popup.
+
+```bash
+tms                                   # pick from ~/Projects
+tms ~/Projects/example_project # skip the picker
+TMS_PATHS="$HOME/Projects $HOME/work" tms   # search more roots
+```
+
+`tmx <session> [dir]` creates the session layout (`term, nvim, ai, term`) and is what `tms` calls under the hood.
+
+### Detach session and attach-session
 
 ```bash
 # From within a tmux session, prefix + d #Detatch session
@@ -78,7 +91,8 @@ Tested Nvim 0.12 but abandoned it halfway. I was spending more time configuring 
 - [x] [Lazydocker](https://github.com/jesseduffield/lazydocker), lazy way to purge unused containers and images
 - [x] fzf, rg, jq for getter terminal experience
 - [x] [OpenCode](https://opencode.ai/), claude code alternate when CC is down or when testing local on-prem models
-- [ ] MLX for local model inference on Apple Silicon
+- [x] MLX for local model inference on Apple Silicon
+- [x] Scripts folder symlink to ~/.local/bin
 
 ### Nvim 0.12 checklist
 
